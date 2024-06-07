@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:insert="~{index :: head}"></head>
+    <body>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 my-5 d-flex justify-content-center align-items-center">
+                    <span class="h1">Dettaglio</span>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="card" style="width: 18rem;">
+                        <!-- <img src="https://www.ilturista.info/myTurista/files/1/le_acque_spettacolari_della_grotta_verde_della_marina_di_andrano_in_salento.jpg" class="card-img-top" alt="..."> -->
+                        <!-- <div th:each="image:${author.images}">
+                            <img th:src="${image.path}" class="card-img-top" alt="...">
+                        </div> -->
+                        <!-- <div>
+                            Valore della collezione author.images: <span th:text="${author.images}"></span>
+                        </div> -->
+                        <div id="carouselExample" class="carousel slide">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img th:src="${author.images[0].path}" class="card-img-top" alt="...">
+                                </div>
+                                <div th:each="image, iterStat : ${author.images}" th:if="${iterStat.index > 0}">
+                                    <div class="carousel-item">
+                                        <img th:src="${image.path}" class="card-img-top" alt="...">
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+
+                        <div class="card-body">
+                          <h5 class="card-title" th:text="${author.fullname}"></h5>
+                          <p class="card-text" th:text="${author.email}"></p>
+                          <p class="card-text" th:text="${author.numberOfPosts}"></p>
+
+                          <a th:href="@{/authors}" class="btn btn-primary">Torna indietro</a>
+                        </div>
+                      </div>
+                </div>
+            </div>
+          </div>
+
+
+          
+          <script th:replace="~{index :: bootstrap}"></script>
+          <script>console.log("Ciao sono lo script iniettato")</script>  
+    </body>
+</html>

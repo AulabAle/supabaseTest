@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head th:insert="~{index :: head}"></head>
+    </head>
+    
+    <body>
+        <div class="container">
+			<div class="row">
+				<div class="col-12 my-4">
+					<h1 class="text-center">Accedi!</h1>
+					<h2 class="text-center">inserisci username e password</h2>
+				</div>
+			</div>
+		</div>
+
+		<div th:if="${param.error}">
+			Invalid username and password.
+		</div>
+		<div th:if="${param.logout}">
+			You have been logged out.
+		</div>
+		<div class="container ">
+			<div class="row">
+				<div class="col-12 col-md-9 col-lg-6 mx-auto">
+					<form th:action="@{/login}" method="post">
+						<div class="mb-3">
+							<label for="usernameLogin" class="form-label">Username</label>
+							<input type="text" name="username" class="form-control" id="usernameLogin">
+						</div>
+						<div class="mb-3">
+							<label for="passwordLogin" class="form-label">Password</label>
+							<input type="password" name="password" class="form-control" id="passwordLogin">
+						</div>
+						<div class="d-flex justify-content-evenly">
+							<button type="submit" value="Log in"  class="btn btn-primary">Log In</button>
+							<button type="reset" class="btn btn-secondary">Reset</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+        
+        <script th:replace="~{index :: bootstrap}"></script>
+    </body>
+</html>
